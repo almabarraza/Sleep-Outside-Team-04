@@ -32,11 +32,11 @@ export default class ProductDetails {
         document.querySelector('h3').textContent = this.product.NameWithoutBrand;
 
         const productImage = document.getElementById('productImage');
-        productImage.src = product.Image;
+        productImage.src = product.Image; console.log(product.Image);
         productImage.alt = product.NameWithoutBrand;
 
         document.getElementById('productPrice').textContent = product.FinalPrice;
-        document.getElementById('productColor').textContent = product.Colors[0].ColorName;
+        document.getElementById('productColor').textContent = product.Colors[0].ColorName; 
         document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
 
         document.getElementById('addToCart').dataset.id = product.Id;
