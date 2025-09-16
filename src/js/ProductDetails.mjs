@@ -28,8 +28,7 @@ export default class ProductDetails {
 
 
     async renderProductDetails() {
-        console.log('entra render');
-        console.log(this.product);
+
 
         document.querySelector('h2').textContent = this.product.Brand.Name;
         document.querySelector('h3').textContent = this.product.NameWithoutBrand;
