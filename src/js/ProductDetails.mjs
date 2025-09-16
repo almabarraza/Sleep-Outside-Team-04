@@ -13,7 +13,8 @@ export default class ProductDetails {
         this.product = await this.dataSource.findProductById(this.productId);
 
         document.getElementById('addToCart').addEventListener('click', this.addProductToCart.bind(this));
-        this.renderProductDetails();
+
+        await this.renderProductDetails();
 
     }
 
@@ -26,20 +27,21 @@ export default class ProductDetails {
     }
 
 
-    renderProductDetails() {
+    async renderProductDetails() {
+
 
         document.querySelector('h2').textContent = this.product.Brand.Name;
         document.querySelector('h3').textContent = this.product.NameWithoutBrand;
 
         const productImage = document.getElementById('productImage');
-        productImage.src = product.Image;
-        productImage.alt = product.NameWithoutBrand;
+        productImage.src = this.product.Image;
+        productImage.alt = this.product.NameWithoutBrand;
 
-        document.getElementById('productPrice').textContent = product.FinalPrice;
-        document.getElementById('productColor').textContent = product.Colors[0].ColorName;
-        document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
+        document.getElementById('productPrice').textContent = this.product.FinalPrice;
+        document.getElementById('productColor').textContent = this.product.Colors[0].ColorName;
+        document.getElementById('productDesc').innerHTML = this.product.DescriptionHtmlSimple;
 
-        document.getElementById('addToCart').dataset.id = product.Id;
+        document.getElementById('addToCart').dataset.id = this.product.Id;
     }
 
 
