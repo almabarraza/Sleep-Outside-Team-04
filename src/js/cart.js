@@ -2,8 +2,20 @@ import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  if (cartItems.length > 0) {
+    const cartFooter = document.querySelector(".cart-footer");
+    cartFooter.classList.remove("hide");
+    const total = cartItems.reduce(
+      (sumTotal, item) => sumTotal + Number(item.FinalPrice),
+      0,
+    );
+    const sum = document.getElementById("sum");
+    sum.textContent = total;
+  }
 }
 
 function cartItemTemplate(item) {
