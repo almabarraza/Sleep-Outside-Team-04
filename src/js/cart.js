@@ -1,12 +1,15 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
+
 loadHeaderFooter();
+
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  console.log(cartItems);
 
   if (cartItems.length > 0) {
     const cartFooter = document.querySelector(".cart-footer");
@@ -20,11 +23,12 @@ function renderCartContents() {
   }
 }
 
+
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
