@@ -8,13 +8,12 @@ order.init();
 
 //event when customer changes the zip code to recalculate the shipping and order total
 document
-    .querySelector("#zip")
-    .addEventListener("blur", order.calculateOrderTotal.bind(order));
+  .querySelector("#zip")
+  .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
 //Submit button event prevent to execute the checkout code
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    console.log("evento botón");
-    order.checkout();
+  order.checkout();
 });
