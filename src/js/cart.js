@@ -9,7 +9,7 @@ function renderCartContents() {
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  console.log(cartItems);
+  //console.log(cartItems);
 
   if (cartItems.length > 0) {
     const cartFooter = document.querySelector(".cart-footer");
