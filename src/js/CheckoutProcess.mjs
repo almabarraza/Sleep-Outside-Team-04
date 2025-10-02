@@ -42,8 +42,9 @@ export default class CheckoutProcess {
         this.orderTotal = 0;
     }
 
-    Init() {
+    init() {
         this.list = getLocalStorage(this.key);
+        console.log(this.list);
         this.calculateItemSummary();
     }
 
@@ -52,8 +53,9 @@ export default class CheckoutProcess {
 
     calculateItemSummary() {
 
-        const summaryElement = document.querySelector(this.outputSelector + "#cartTotal");
-        const itemNumElement = document.querySelector(this.outputSelector + "#num-items");
+        const summaryElement = document.querySelector(this.outputSelector + " #cartTotal");
+        const itemNumElement = document.querySelector(this.outputSelector + " #num-items");
+        console.log(this.outputSelector);
         itemNumElement.innerText = this.list.length;
         const amounts = this.list.map((item) => item.FinalPrice);
         this.itemTotal = amounts.reduce((sum, item) => sum + item);
@@ -64,11 +66,10 @@ export default class CheckoutProcess {
 
 
     calculateOrderTotal() {
-
+        console.log(this);
         this.tax = (this.itemTotal * 0.06);
-        this.shipping = (this.list.length() - 1) * 2 + 10;
-        this.orderTotal = this.itemTotal + this.tax + this.shipping;
-
+        this.shipping = (this.list.length - 1) * 2 + 10;
+        this.orderTotal = (parseFloat(this.itemTotal) + parseFloat(this.tax) + parseFloat(this.shipping))
 
         //display the totals.
         this.displayOrderTotals();
@@ -78,8 +79,12 @@ export default class CheckoutProcess {
     displayOrderTotals() {
         //once the totals are all calculated display them in the order sumary page
         const tax = document.querySelector(`${this.outputSelector} #tax`);
+        const shipping = document.querySelector(`${this.outputSelector} #shipping`);
+        const orderTotal = document.querySelector(`${this.outputSelector} #orderTotal`);
 
         tax.innerText = `$${this.tax.toFixed(2)}`;
+        shipping.innerText = `$${this.shipping.toFixed(2)}`;
+        orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
     }
 
 
