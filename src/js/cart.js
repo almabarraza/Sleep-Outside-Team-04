@@ -1,8 +1,6 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
-
 loadHeaderFooter();
-
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -22,7 +20,6 @@ function renderCartContents() {
     sum.textContent = total;
   }
 }
-
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
