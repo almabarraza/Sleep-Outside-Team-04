@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -307,4 +307,37 @@ footer {
 
 .checkout-button:visited {
   color: white;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logo-animated {
+  animation: shake 2s ease;
+}
+
+.color-message {
+  background-color: yellow;
+  color: darkred;
+  text-align: center;
+  font-size: larger;
 }

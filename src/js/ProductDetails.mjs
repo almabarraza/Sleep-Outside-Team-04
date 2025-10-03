@@ -30,7 +30,18 @@ export default class ProductDetails {
 
         products.push(this.product);
         setLocalStorage("so-cart", products);
+
+        //alert Message when the add to cart button has been clicking
         alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
+        
+        //logo animation
+        const cartLogo = document.getElementById("cart-logo");
+        cartLogo.classList.add("logo-animated");
+
+        cartLogo.addEventListener("animationend", function handler() {
+            cartLogo.classList.remove("logo-animated");
+            cartLogo.removeEventListener("animationend", handler);
+        })
 
     }
 
@@ -74,6 +85,7 @@ function productDetailsTemplate(product) {
     document.getElementById('p-description').innerHTML = product.DescriptionHtmlSimple;
 
     document.getElementById('add-to-cart').dataset.id = product.Id;
+
 }
 
 
